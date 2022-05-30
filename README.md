@@ -16,7 +16,7 @@ react: 18
 ## 🤍 Versión de Router
 
 ```
-react-router: 6
+react-router: 6.3
 ```
 
 
