@@ -11,7 +11,6 @@ export const AppRouter = () => {
                     <Route path="/" element={<JournalScreen />} />
                     <Route path="/auth/*" element={<AuthRouter />} />
                     <Route path="/*" element={<AuthRouter />} />
-
                 </Routes>
             </BrowserRouter>
         </div>
