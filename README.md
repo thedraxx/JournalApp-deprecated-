@@ -19,6 +19,11 @@ react: 18
 react-router: 6.3
 ```
 
+## 🤍 Versión de React Redux
+
+```
+react-redux: 8.0.2
+```
 
 ## 🔮 Futuro del Proyecto
 
