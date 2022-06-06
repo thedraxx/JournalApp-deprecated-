@@ -25,6 +25,12 @@ react-router: 6.3
 react-redux: 8.0.2
 ```
 
+## 🤍 Versión de Firebase
+
+```
+Firebase: 8.0.10
+```
+
 ## 🔮 Futuro del Proyecto
 
 En proceso...
