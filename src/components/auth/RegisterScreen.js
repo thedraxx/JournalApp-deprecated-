@@ -1,11 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
 
 export const RegisterScreen = () => {
+
+
+    const [formValues, handleInputChange, reset] = useForm({
+        name: 'Hernando',
+        email: 'nando@gmail.com',
+        password: '12346',
+        password2: '12346',
+    })
+    const { name, email, password, password2 } = formValues
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+    }
+
+    const isFormValid = () => {
+
+    }
+
     return (
         <>
             <h3 className='auth__tittle'>Register</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
 
                 <input
                     type="text"
@@ -13,6 +33,8 @@ export const RegisterScreen = () => {
                     name="name"
                     className='auth__input'
                     autoComplete='off'
+                    value={name}
+                    onChange={handleInputChange}
                 />
 
                 <input
@@ -21,6 +43,8 @@ export const RegisterScreen = () => {
                     name="email"
                     className='auth__input'
                     autoComplete='off'
+                    value={email}
+                    onChange={handleInputChange}
                 />
 
                 <input
@@ -28,6 +52,8 @@ export const RegisterScreen = () => {
                     placeholder="Password"
                     name="password"
                     className='auth__input'
+                    value={password}
+                    onChange={handleInputChange}
                 />
 
                 <input
@@ -35,6 +61,8 @@ export const RegisterScreen = () => {
                     placeholder="Confirm Password"
                     name="password2"
                     className='auth__input'
+                    value={password2}
+                    onChange={handleInputChange}
                 />
 
                 <button

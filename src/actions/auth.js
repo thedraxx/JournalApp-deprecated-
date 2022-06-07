@@ -20,7 +20,6 @@ export const startGoogleLogin = () => {
     }
 }
 
-
 export const login = (uid, displayname) => {
     return {
         type: types.login,
