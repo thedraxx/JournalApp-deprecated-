@@ -35,6 +35,12 @@ Firebase: 8.10.0
 ```
 Redux-Thunk : 2.4.1
 ```
+## 🤍 Versión de Validator
+
+```
+Validator: 13.7.0
+```
+
 
 ## 🔮 Futuro del Proyecto
 
