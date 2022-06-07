@@ -28,7 +28,12 @@ react-redux: 8.0.2
 ## 🤍 Versión de Firebase
 
 ```
-Firebase: 8.0.10
+Firebase: 8.10.0
+```
+## 🤍 Versión de Thunk
+
+```
+Redux-Thunk : 2.4.1
 ```
 
 ## 🔮 Futuro del Proyecto
