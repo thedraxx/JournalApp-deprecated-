@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
 import validator from 'validator';
 import { RemoveError, setError } from '../../actions/ui';
@@ -8,6 +8,9 @@ import { RemoveError, setError } from '../../actions/ui';
 export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
+
+    //Con esto obtenemos el error que viene del state del reducer
+    const { msgError } = useSelector(state => state.ui);
 
     const [formValues, handleInputChange, reset] = useForm({
         name: 'Hernando',
@@ -33,7 +36,7 @@ export const RegisterScreen = () => {
             dispatch(setError('email is not valid'))
             return false
         } else if (password !== password2 || password.length < 5) {
-            dispatch(setError('password should be at least 6 characterslong'))
+            dispatch(setError('password should be at least 6 characters long'))
             return false
         }
         dispatch(RemoveError())
@@ -44,10 +47,9 @@ export const RegisterScreen = () => {
         <>
             <h3 className='auth__tittle'>Register</h3>
             <form onSubmit={handleSubmit}>
-                <div className='auth__alert-error'>
-                    Hola mundo
-                </div>
-
+                {
+                    msgError && <div className='auth__alert-error'>{msgError}</div>
+                }
                 <input
                     type="text"
                     placeholder="Name"
