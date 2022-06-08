@@ -3,9 +3,13 @@ import { firebase, googleAuthProvider } from "../firebase/firebase-config"
 
 export const startLoginEmailPassowrd = (email, password) => {
     return (dispatch) => {
-        setTimeout(() => {
-            dispatch(login(123, 'pepe'))
-        }, 3500);
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(({ user }) => {
+                dispatch(
+                    login(user.uid, user.displayName)
+                );
+            })
+            .catch(e => console.log(e))
     }
 }
 
@@ -33,12 +37,10 @@ export const startGoogleLogin = () => {
     }
 }
 
-export const login = (uid, displayname) => {
-    return {
-        type: types.login,
-        payload: {
-            uid,
-            displayname,
-        }
+export const login = (uid, displayname) => ({
+    type: types.login,
+    payload: {
+        uid,
+        displayname,
     }
-}
+});

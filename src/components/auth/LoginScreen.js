@@ -9,13 +9,13 @@ export const LoginScreen = () => {
     const dispatch = useDispatch();
 
     const [formValues, handleInputChange, reset] = useForm({
-        email: 'nando',
-        password: '123456',
+        email: 'nando2@gmail.com',
+        password: '1234678',
     });
 
     const { email, password } = formValues;
 
-    const handleSubmit = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
         dispatch(startLoginEmailPassowrd(email, password));
     }
@@ -26,7 +26,7 @@ export const LoginScreen = () => {
     return (
         <>
             <h3 className='auth__tittle'>Login</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
                 <input
                     type="text"
                     placeholder="Email"
