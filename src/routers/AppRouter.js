@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { JournalScreen } from '../components/journal/JournalScreen'
@@ -9,18 +9,26 @@ import { login } from '../actions/auth';
 export const AppRouter = () => {
     const dispatch = useDispatch();
 
+    const [cheking, setCheking] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     useEffect(() => {
 
         firebase.auth().onAuthStateChanged((user) => {
             if (user?.uid) {
-                dispatch(login(user.uid, user.displayName))
+                dispatch(login(user.uid, user.displayName));
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
             }
+            setCheking(false);
         });
 
-    }, [dispatch])
+    }, [dispatch, setCheking, setIsLoggedIn])
+
 
     return (
-        <div>
+        <>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<JournalScreen />} />
@@ -28,6 +36,6 @@ export const AppRouter = () => {
                     <Route path="/*" element={<AuthRouter />} />
                 </Routes>
             </BrowserRouter>
-        </div>
+        </>
     )
 }
