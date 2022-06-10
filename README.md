@@ -41,6 +41,12 @@ Redux-Thunk : 2.4.1
 Validator: 13.7.0
 ```
 
+## 🤍 Versión de SweetAlert2
+
+```
+SweetAlert2: 11.4.17
+```
+
 
 ## 🔮 Futuro del Proyecto
 
