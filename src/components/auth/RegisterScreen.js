@@ -6,40 +6,53 @@ import validator from 'validator';
 import { RemoveError, setError } from '../../actions/ui';
 import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
+// Aapartado de registro
 export const RegisterScreen = () => {
 
+    // El dispatch es para despachar acciones
     const dispatch = useDispatch();
 
     //Con esto obtenemos el error que viene del state del reducer
     const { msgError } = useSelector(state => state.ui);
 
+    //El useForm nos permite trabajar con formularios
     const [formValues, handleInputChange, reset] = useForm({
         name: 'Hernando',
         email: 'nando2@gmail.com',
         password: '1234678',
         password2: '1234678',
     })
+
+    // Sacamos la info del formvalues
     const { name, email, password, password2 } = formValues
 
 
+    // Se ejectua cuando hacemos click en registrar
     const handleSubmit = (e) => {
         e.preventDefault();
+        // llamamos isValid para validar el formulario
         if (isFormValid()) {
+            // Despachamos la accion de registrar con email y password
             dispatch(startRegisterWithEmailPasswordName(name, email, password))
         }
     }
 
+    // usamos VALIDATOR para validar los campos facilmente
     const isFormValid = () => {
         if (name.trim().length === 0) {
+            // Si el nombre esta vacio, mostramos el error
             dispatch(setError('name is requiered'))
             return false
         } else if (!validator.isEmail(email)) {
+            // Si el email no es valido, mostramos el error
             dispatch(setError('email is not valid'))
             return false
         } else if (password !== password2 || password.length < 5) {
+            // Si las contraseñas no coinciden o son menores a 5 caracteres, mostramos el error
             dispatch(setError('password should be at least 6 characters long'))
             return false
         }
+        // Si todo esta bien, eliminamos el error
         dispatch(RemoveError())
         return true;
     }

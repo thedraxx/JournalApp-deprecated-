@@ -6,22 +6,31 @@ import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
 
+    // El dispatch es para despachar acciones
     const dispatch = useDispatch();
+
+    //El useSelector nos permite leer el state del reducer
     const loading = useSelector(state => state.ui.loading);
 
+    //El useForm nos permite trabajar con formularios
     const [formValues, handleInputChange, reset] = useForm({
         email: 'nando2@gmail.com',
         password: '1234678',
     });
 
+    // Sacamos la info del formvalues
     const { email, password } = formValues;
 
+    // Se ejectua cuando hacemos click en login
     const handleLogin = (e) => {
         e.preventDefault();
+        // Despachamos la accion de iniciar sesion con email y password
         dispatch(startLoginEmailPassowrd(email, password));
     }
 
+    // Se ejectua cuando hacemos click en login con google
     const handleGoogleLogin = () => {
+        // Despachamos la accion de iniciar sesion con google
         dispatch(startGoogleLogin())
     }
     return (

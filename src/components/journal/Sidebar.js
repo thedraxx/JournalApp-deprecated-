@@ -1,15 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { JournalEntries } from './JournalEntries'
 import { startLogout } from '../../actions/auth';
-import { types } from '../../types/types';
-import { JournalEntries } from './JournalEntries';
 
 export const Sidebar = () => {
     const dispatch = useDispatch();
 
-    const handleLogout = (e) => {
-        e.preventDefault();
-        dispatch(startLogout());
+    const handleLogout = () => {
+        dispatch(startLogout())
     }
 
     return (

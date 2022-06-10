@@ -1,5 +1,5 @@
 
-
+// Usamos Types para definir los tipos de acciones
 export const types = {
 
     login: '[Auth] Login',
