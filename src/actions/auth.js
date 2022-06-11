@@ -61,11 +61,11 @@ export const startGoogleLogin = () => {
 }
 
 // Esta funcion se ejecuta cuando el usuario hace login, envia el type y payload al reducer
-export const login = (uid, displayname) => ({
+export const login = (uid, displayName) => ({
     type: types.login,
     payload: {
         uid,
-        displayname,
+        displayName,
     }
 });
 
